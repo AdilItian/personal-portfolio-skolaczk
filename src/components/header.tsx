@@ -64,31 +64,33 @@ export const Header = () => {
       <ThemeToggle className="bg-background/80 backdrop-blur-sm sm:hidden" />
       <nav className="text-muted-foreground hidden text-sm sm:block">
         <ul className="flex gap-5">
-          {links.map(({ name, hash }) => (
-            <li key={name}>
-              <Link
-                href={hash}
-                className="hover:text-foreground relative px-4 py-2 transition-colors"
-                onClick={() => {
-                  setActiveSection(name);
-                  setTimeOfLastClick(Date.now());
-                }}
-              >
-                {name}
-                {name === activeSection && (
-                  <motion.span
-                    className="bg-muted absolute inset-0 -z-10 rounded-full"
-                    layoutId="activeSection"
-                    transition={{
-                      type: 'spring',
-                      stiffness: 380,
-                      damping: 30,
-                    }}
-                  ></motion.span>
-                )}
-              </Link>
-            </li>
-          ))}
+          {links
+            .filter((f) => !f.hidden)
+            .map(({ name, hash }) => (
+              <li key={name}>
+                <Link
+                  href={hash}
+                  className="hover:text-foreground relative px-4 py-2 transition-colors"
+                  onClick={() => {
+                    setActiveSection(name);
+                    setTimeOfLastClick(Date.now());
+                  }}
+                >
+                  {name}
+                  {name === activeSection && (
+                    <motion.span
+                      className="bg-muted absolute inset-0 -z-10 rounded-full"
+                      layoutId="activeSection"
+                      transition={{
+                        type: 'spring',
+                        stiffness: 380,
+                        damping: 30,
+                      }}
+                    ></motion.span>
+                  )}
+                </Link>
+              </li>
+            ))}
         </ul>
       </nav>
     </motion.header>
