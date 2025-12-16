@@ -1,3 +1,4 @@
+import { SiFlutter } from 'react-icons/si';
 import {
   ArrowRight,
   Briefcase,
@@ -26,6 +27,7 @@ export const Icons = {
   star: Star,
   calendar: Calendar,
   building: Building2,
+  flutter: SiFlutter,
   audiophile: (props: LucideProps) => (
     <svg
       width="64"

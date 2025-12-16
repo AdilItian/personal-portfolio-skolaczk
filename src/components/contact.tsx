@@ -4,9 +4,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { toast } from 'sonner';
 
-import { sendEmailAction } from '@/actions/send-email';
+// import { toast } from 'sonner';
+// import { sendEmailAction } from '@/actions/send-email';
 import { Button } from '@/components/button';
 import { Icons } from '@/components/icons';
 import { SectionHeading } from '@/components/section-heading';
@@ -19,20 +19,19 @@ export const Contact = () => {
   const {
     register,
     handleSubmit,
-    reset,
+    // reset,
     formState: { errors },
   } = useForm<TFormSchema>({ resolver: zodResolver(formSchema) });
 
-  const onSubmit = async (values: TFormSchema) => {
-    const { data, error } = await sendEmailAction(values);
-
-    if (error) {
-      toast.error(error);
-      return;
-    }
-
-    toast.success(data);
-    reset();
+  // const onSubmit = async (values: TFormSchema) => {
+  const onSubmit = async () => {
+    // const { data, error } = await sendEmailAction(values);
+    // if (error) {
+    //   toast.error(error);
+    //   return;
+    // }
+    // toast.success(data);
+    // reset();
   };
 
   return (
@@ -63,17 +62,17 @@ export const Contact = () => {
               className="text-muted-foreground hover:text-foreground h-fit p-0 font-medium underline transition-colors"
               asChild
             >
-              <Link href="mailto:skolakmichal1@gmail.com">
-                skolakmichal1@gmail.com
+              <Link href="mailto:adilfarooq.it@gmail.com">
+                adilfarooq.it@gmail.com
               </Link>
             </Button>{' '}
-            or through this form.
+            {/* or through this form. */}
           </>
         }
       />
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col items-center gap-5"
+        className="hidden flex-col items-center gap-5" // remove hidden and add flex
       >
         <div className="w-full max-w-xl">
           <label
@@ -86,6 +85,7 @@ export const Contact = () => {
             Email
           </label>
           <input
+            disabled
             type="email"
             id="email"
             placeholder="hello@gmail.com"
@@ -112,6 +112,7 @@ export const Contact = () => {
             Message
           </label>
           <textarea
+            disabled
             id="message"
             placeholder="Hello! What's up?"
             {...register('message')}
@@ -126,7 +127,7 @@ export const Contact = () => {
             </p>
           )}
         </div>
-        <Button size="lg">
+        <Button size="lg" disabled>
           Submit <Icons.arrowRight className="ml-2 size-4" />
         </Button>
       </form>
