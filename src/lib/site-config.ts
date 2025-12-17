@@ -3,7 +3,7 @@ import { env } from '@/env.mjs';
 export const siteConfig = {
   title: 'Adil Farooq | Front-end developer',
   description:
-    "Hello, I'm Michał. I am front-end developer from Lahore, Pakistan. I enjoy building sites and apps. My focus is React (Next.js).",
+    "Hello, I'm Adil Farooq. I am front-end developer from Lahore, Pakistan. I enjoy building sites and apps. My focus is React (Next.js).",
   keywords: [
     'Adil Farooq',
     'Front-end developer',
